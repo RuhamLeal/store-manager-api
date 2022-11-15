@@ -14,10 +14,14 @@ async function findProductById(productId) {
   return foundProduct;
 }
 
-async function registerProduct(product) {
-  await connection.execute(
-    'INSERT INTO StoreManager.products (name) VALUES (?)', [product],
+async function registerProduct(productName) {
+  const [newProduct] = await connection.execute(
+    'INSERT INTO StoreManager.products (name) VALUES (?)', [productName],
   );
+
+  const registeredProduct = await findProductById(newProduct.insertId);
+  
+  return registeredProduct;
 }
 
 async function updateProduct(productId, updatedProduct) {

@@ -20,7 +20,17 @@ async function findProductById(productId) {
   }
 }
 
+async function registerProduct(product) {
+  try {
+    const registeredProduct = await Product.registerProduct(product);
+    return { status: 201, data: registeredProduct };
+  } catch (err) {
+    return { status: 500, data: { message: err.message } };
+  }
+}
+
 module.exports = {
   findAllProducts,
   findProductById,
+  registerProduct,
 };

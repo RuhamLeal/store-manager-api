@@ -1,6 +1,7 @@
 const {
   findAllProducts,
   findProductById,
+  registerProduct,
 } = require('../services/product.service');
 
 const getProducts = async (_req, res) => {
@@ -14,7 +15,14 @@ const getProductById = async (req, res) => {
   return res.status(status).json(data);
 };
 
+const addProduct = async (req, res) => {
+  const { name } = req.body;
+  const { status, data } = await registerProduct(name);
+  return res.status(status).json(data);
+};
+
 module.exports = {
   getProducts,
   getProductById,
+  addProduct,
 };
