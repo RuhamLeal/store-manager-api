@@ -3,6 +3,7 @@ const {
   findProductById,
   registerProduct,
   updateProduct,
+  deleteProduct,
 } = require('../services/product.service');
 
 const getProducts = async (_req, res) => {
@@ -28,9 +29,17 @@ const updateProductById = async (req, res) => {
   return res.status(status).json(data);
 };
 
+const deleteProductById = async (req, res) => {
+  const { id } = req.params;
+  const { status, data } = await deleteProduct(id);
+  if (data) return res.status(status).json(data);
+  return res.status(status).send();
+};
+
 module.exports = {
   getProducts,
   getProductById,
   addProduct,
   updateProductById,
+  deleteProductById,
 };

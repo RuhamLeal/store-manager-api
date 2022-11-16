@@ -33,9 +33,14 @@ async function updateProduct(productId, productToUpdate) {
 }
 
 async function deleteProduct(productId) {
-  await connection.execute(
-    'DELETE FROM StoreManager.products WHERE id = ?', [productId],
-  );
+  const productToDelete = await findProductById(productId);
+  if (productToDelete) {
+    await connection.execute(
+      'DELETE FROM StoreManager.products WHERE id = ?', [productId],
+    );
+    return true;
+  }
+  return false;
 }
 
 module.exports = {
