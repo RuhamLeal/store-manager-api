@@ -1,4 +1,4 @@
-const Product = require('../models/productModel');
+const Product = require('../models/product.model');
 const { validateNewProduct } = require('./validations/productValidations');
 
 async function findAllProducts() {
