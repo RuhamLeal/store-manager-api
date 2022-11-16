@@ -13,8 +13,8 @@ async function findAllSales() {
 
 async function findSaleById(saleId) {
   try {
-    const foundSale = await Sale.findSaleById(saleId);
-    if (foundSale) return { status: 200, data: foundSale };
+    const foundSales = await Sale.findSaleById(saleId);
+    if (foundSales.length > 0) return { status: 200, data: foundSales };
     return { status: 404, data: { message: 'Sale not found' } };
   } catch (err) {
     return { status: 500, data: { message: err.message } };
