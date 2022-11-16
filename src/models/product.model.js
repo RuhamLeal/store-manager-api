@@ -24,10 +24,12 @@ async function registerProduct(productName) {
   return registeredProduct;
 }
 
-async function updateProduct(productId, updatedProduct) {
+async function updateProduct(productId, productToUpdate) {
   await connection.execute(
-    'UPDATE StoreManager.products SET name = ? WHERE id = ?', [updatedProduct, productId],
+    'UPDATE StoreManager.products SET name = ? WHERE id = ?', [productToUpdate, productId],
   );
+  const updatedProduct = await findProductById(productId);
+  return updatedProduct;
 }
 
 async function deleteProduct(productId) {

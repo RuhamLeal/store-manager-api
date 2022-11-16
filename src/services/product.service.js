@@ -1,5 +1,5 @@
 const Product = require('../models/product.model');
-const { validateNewProduct } = require('./validations/productValidations');
+const { validateNewProduct, validateProductToUpdate } = require('./validations/productValidations');
 
 async function findAllProducts() {
   try {
@@ -36,8 +36,25 @@ async function registerProduct(product) {
   }
 }
 
+async function updateProduct(productId, productName) {
+  try {
+    const validationMessage = await validateProductToUpdate(productName);
+
+    if (validationMessage !== 'without errors') {
+      return { status: validationMessage.status, data: { message: validationMessage.error } };
+    }
+
+    const updatedProduct = await Product.updateProduct(productId, productName);
+    if (updatedProduct) return { status: 200, data: updatedProduct };
+    return { status: 404, data: { message: 'Product not found' } };
+  } catch (err) {
+    return { status: 500, data: { message: err.message } };
+  }
+}
+
 module.exports = {
   findAllProducts,
+  updateProduct,
   findProductById,
   registerProduct,
 };
