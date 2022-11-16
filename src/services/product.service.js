@@ -24,7 +24,6 @@ async function findProductById(productId) {
 async function registerProduct(product) {
   try {
     const validationMessage = await validateNewProduct(product);
-    console.log(validationMessage);
 
     if (validationMessage !== 'without errors') {
       return { status: validationMessage.status, data: { message: validationMessage.error } };
