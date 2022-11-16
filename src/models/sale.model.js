@@ -1,3 +1,4 @@
+const camelize = require('camelize');
 const connection = require('./connection');
 
 async function findAllSales() {
@@ -8,7 +9,7 @@ async function findAllSales() {
     ON SALEP.sale_id = SALE.id
     ORDER BY SALEP.sale_id`,
   );
-  return sales;
+  return camelize(sales);
 }
 
 async function findSaleById(saleId) {
@@ -19,7 +20,7 @@ async function findSaleById(saleId) {
     ON SALEP.sale_id = SALE.id
     WHERE SALE.id = ?`, [saleId],
   );
-  return foundSale;
+  return camelize(foundSale);
 }
 
 async function registerSale(sales) {
