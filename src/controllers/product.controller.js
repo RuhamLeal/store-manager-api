@@ -16,8 +16,7 @@ const getProductById = async (req, res) => {
 };
 
 const addProduct = async (req, res) => {
-  const { name } = req.body;
-  const { status, data } = await registerProduct(name);
+  const { status, data } = await registerProduct(req.body);
   return res.status(status).json(data);
 };
 
