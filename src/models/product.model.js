@@ -15,11 +15,11 @@ async function findProductById(productId) {
 }
 
 async function registerProduct(productName) {
-  const [newProduct] = await connection.execute(
+  const [{ insertId }] = await connection.execute(
     'INSERT INTO StoreManager.products (name) VALUES (?)', [productName],
   );
 
-  const registeredProduct = await findProductById(newProduct.insertId);
+  const registeredProduct = await findProductById(insertId);
   
   return registeredProduct;
 }
