@@ -1,6 +1,26 @@
 const Sale = require('../models/sale.model');
 const { validateNewSale } = require('./validations/salesValidations');
 
+async function findAllSales() {
+  try {
+    const allSales = await Sale.findAllSales();
+    if (allSales) return { status: 200, data: allSales };
+    return { status: 500, data: { message: 'Database internal ERROR' } };
+  } catch (err) {
+    return { status: 500, data: { message: err.message } };
+  }
+}
+
+async function findSaleById(saleId) {
+  try {
+    const foundSale = await Sale.findSaleById(saleId);
+    if (foundSale) return { status: 200, data: foundSale };
+    return { status: 404, data: { message: 'Sale not found' } };
+  } catch (err) {
+    return { status: 500, data: { message: err.message } };
+  }
+}
+
 async function registerSale(sales) {
   try {
     const validationMessage = await validateNewSale(sales);
@@ -17,4 +37,6 @@ async function registerSale(sales) {
 
 module.exports = {
   registerSale,
+  findAllSales,
+  findSaleById,
 };
