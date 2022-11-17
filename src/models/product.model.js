@@ -18,29 +18,29 @@ async function registerProduct(productName) {
   const [{ insertId }] = await connection.execute(
     'INSERT INTO StoreManager.products (name) VALUES (?)', [productName],
   );
-
-  const registeredProduct = await findProductById(insertId);
-  
-  return registeredProduct;
+  return {
+    id: insertId,
+    name: productName,
+  };
 }
 
 async function updateProduct(productId, productToUpdate) {
-  await connection.execute(
+  const [response] = await connection.execute(
     'UPDATE StoreManager.products SET name = ? WHERE id = ?', [productToUpdate, productId],
   );
-  const updatedProduct = await findProductById(productId);
-  return updatedProduct;
+  if (response.affectedRows === 0) return false;
+  return {
+    id: productId,
+    name: productToUpdate,
+  };
 }
 
 async function deleteProduct(productId) {
-  const productToDelete = await findProductById(productId);
-  if (productToDelete) {
-    await connection.execute(
-      'DELETE FROM StoreManager.products WHERE id = ?', [productId],
-    );
-    return true;
-  }
-  return false;
+  const [response] = await connection.execute(
+    'DELETE FROM StoreManager.products WHERE id = ?', [productId],
+  );
+  if (response.affectedRows === 0) return false;
+  return true;
 }
 
 module.exports = {
