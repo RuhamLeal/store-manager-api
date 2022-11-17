@@ -13,10 +13,10 @@ const products = [
   }
 ]
 
-const updatedProductMock = [{
+const updatedProductMock = {
   id: 1,
-  name: "Armadura do homem de ferro",
-}];
+  name: "Relampago Mcqueen",
+};
 
 const newProduct = {
   name: "Armadura do homem de ferro"
