@@ -55,7 +55,6 @@ async function updateProduct(productId, productName) {
 async function deleteProduct(productId) {
   try {
     const deletedProduct = await Product.deleteProduct(productId);
-    console.log(deletedProduct);
     if (deletedProduct) return { status: 204 };
     return { status: 404, data: { message: 'Product not found' } };
   } catch (err) {
