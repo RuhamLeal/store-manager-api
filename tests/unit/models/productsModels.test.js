@@ -5,7 +5,7 @@ const Product = require('../../../src/models/product.model');
 const { products, newProduct, insertProduct, newProductResponse, updatedProductMock } = require('./mocks/products.mock');
 
 describe('Testing Product Model', () => {
-  beforeEach(sinon.restore)
+  afterEach(sinon.restore);
   it('Testing if the findAllProducts Model returns all products correctly', async () => {
     sinon.stub(connection, 'execute').resolves([products]);
 
@@ -30,7 +30,7 @@ describe('Testing Product Model', () => {
     expect(response).to.be.undefined
   });
 
-  /* it('Testing if the registerProduct Model add product correctly', async () => {
+  it('Testing if the registerProduct Model add product correctly', async () => {
     sinon.stub(connection, 'execute').resolves([[newProductResponse]]);
 
     await Product.registerProduct('Armadura do homem de ferro');
@@ -48,5 +48,5 @@ describe('Testing Product Model', () => {
     const response = await Product.findProductById(1)
 
     expect(response).to.be.deep.equal(updatedProductMock)
-  }); */
+  });
 })

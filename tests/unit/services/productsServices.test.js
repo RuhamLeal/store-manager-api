@@ -11,7 +11,7 @@ const {
   updatedProduct } = require('./mocks/products.mock');
 
 describe('Testing Product Service', () => {
-  beforeEach(sinon.restore);
+  afterEach(sinon.restore);
   it('Testing if the findAllProducts service returns all products correctly', async () => {
     sinon.stub(ProductModel, 'findAllProducts').resolves(products);
 

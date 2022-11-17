@@ -5,7 +5,7 @@ const Sale = require('../../../src/models/sale.model');
 const { salesSold, sale, allSales, saleResponse } = require('./mocks/sales.mock');
 
 describe('Testing Sale Model', () => {
-  beforeEach(sinon.restore);
+  afterEach(sinon.restore);
     it('Testing if the registerSale model register a sale correctly', async () => {
       sinon.stub(connection, 'execute').resolves([{ insertId: 3 }]);
 
