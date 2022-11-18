@@ -40,17 +40,17 @@ If you dont have MySQL installed, follow the steps below:
 
 Clone the repo:     
 ```
-$ git clone https://github.com/RuhamLeal/store-manager-api.git    
+git clone https://github.com/RuhamLeal/store-manager-api.git    
 ```
 
 Go to project folder:     
 ```
-$ cd store-manager-api   
+cd store-manager-api   
 ```
 
 Install dependencies:     
 ```
-$ npm install    
+npm install    
 ```
 
 Populate database with scripts:    
@@ -59,7 +59,7 @@ migration.sql then seed.sql
 
 Run server:
 ```
-$ npm start    
+npm start    
 ```
 
 ```
