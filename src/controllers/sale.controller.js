@@ -12,7 +12,8 @@ const getSaleById = async (req, res) => {
 };
 
 const addSale = async (req, res) => {
-  const { status, data } = await saleService.registerSale(req.body);
+  const sales = req.body;
+  const { status, data } = await saleService.registerSale(sales);
   return res.status(status).json(data);
 };
 
@@ -25,7 +26,8 @@ const deleteSale = async (req, res) => {
 
 const updateSale = async (req, res) => {
   const { id } = req.params;
-  const { status, data } = await saleService.updateSale(id, req.body);
+  const salesToUpdate = req.body;
+  const { status, data } = await saleService.updateSale(id, salesToUpdate);
   return res.status(status).json(data);
 };
 

@@ -12,7 +12,8 @@ const getProductById = async (req, res) => {
 };
 
 const addProduct = async (req, res) => {
-  const { status, data } = await productService.registerProduct(req.body);
+  const product = req.body;
+  const { status, data } = await productService.registerProduct(product);
   return res.status(status).json(data);
 };
 
