@@ -52,7 +52,7 @@ describe('Testing Product Model', () => {
 
     const response = await product.updateProduct(999, 'Relampago Mcqueen');
 
-    expect(response).to.be.false
+    expect(response).to.be.false;
   });
 
   it('Testing if the deleteProduct Model delete a product correctly', async () => {
@@ -60,7 +60,7 @@ describe('Testing Product Model', () => {
 
     const response = await product.deleteProduct(1);
 
-    expect(response).to.be.true;
+    expect(response).to.be.equal(1);
   });
 
   it('Testing if the deleteProduct Model return error when passed a id that does not exist', async () => {
@@ -68,6 +68,6 @@ describe('Testing Product Model', () => {
 
     const response = await product.deleteProduct(999);
 
-    expect(response).to.be.false;
+    expect(response).to.be.equal(0);
   });
 })

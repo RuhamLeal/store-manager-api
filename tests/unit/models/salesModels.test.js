@@ -43,7 +43,7 @@ describe('Testing Sale Model', () => {
 
     const response = await Sale.deleteSale(1);
 
-    expect(response).to.be.true;
+    expect(response).to.be.equal(1);
   });
 
   it('Testing if the deleteSale model return error when passed a id that does not exists', async () => {
@@ -51,7 +51,7 @@ describe('Testing Sale Model', () => {
 
     const response = await Sale.deleteSale(999);
 
-    expect(response).to.be.false;
+    expect(response).to.be.equal(0);
   });
 
   it('Testing if the updateSale model update a sale correctly', async () => {

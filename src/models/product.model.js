@@ -39,8 +39,8 @@ async function deleteProduct(productId) {
   const [response] = await connection.execute(
     'DELETE FROM StoreManager.products WHERE id = ?', [productId],
   );
-  if (response.affectedRows === 0) return false;
-  return true;
+
+  return response.affectedRows;
 }
 
 module.exports = {
