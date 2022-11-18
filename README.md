@@ -23,7 +23,7 @@ products: http://localhost:3000/products to show all products data.
 sales: http://localhost:3000/sales to show all sales data    
 find product by ID: http://localhost:3000/products/${id}            
 find sale by ID: http://localhost:3000/sales/${id}     
-delete a sale: http://localhost:3000/sales/${id}  with delete method 
+delete a sale: http://localhost:3000/sales/${id}  with delete method      
 delete a product: http://localhost:3000/products/${id}  with delete method     
 
 Project have more endpoints, install repo and see more !
