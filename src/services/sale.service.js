@@ -55,7 +55,6 @@ async function updateSale(saleId, sales) {
     }
 
     const updatedSales = await Sale.updateSale(saleId, sales);
-/*     console.log(updatedSales); */
     if (updatedSales) return { status: 200, data: updatedSales };
     return { status: 404, data: { message: 'Sale not found' } };
   } catch (err) {

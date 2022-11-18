@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const connection = require('../../../src/models/connection');
 const Sale = require('../../../src/models/sale.model');
-const { salesSold, sale, allSales, saleResponse } = require('./mocks/sales.mock');
+const { salesSold, sale, allSales, saleResponse, updatedSale, salesUpdated } = require('./mocks/sales.mock');
 
 describe('Testing Sale Model', () => {
   afterEach(sinon.restore);
@@ -50,6 +50,22 @@ describe('Testing Sale Model', () => {
     sinon.stub(connection, 'execute').resolves([{ affectedRows: 0 }]);
 
     const response = await Sale.deleteSale(999);
+
+    expect(response).to.be.false;
+  });
+
+  it('Testing if the updateSale model update a sale correctly', async () => {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+
+    const response = await Sale.updateSale(1, updatedSale);
+
+    expect(response).to.be.deep.equal(salesUpdated)
+  });
+
+  it('Testing if the updateSale model return error when passed a id that does not exists', async () => {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 0 }]);
+
+    const response = await Sale.updateSale(999, updatedSale);
 
     expect(response).to.be.false;
   });

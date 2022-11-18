@@ -114,6 +114,31 @@ const saleId = [
   }
 ]
 
+const salesUpdated = {
+  saleId: 1,
+  itemsUpdated: [
+    {
+      productId: 1,
+      quantity: 5,
+    },
+    {
+      productId: 2,
+      quantity: 5,
+    }
+  ]
+}
+
+const updatedSale = [
+  {
+    productId: 1,
+    quantity: 5,
+  },
+  {
+    productId: 2,
+    quantity: 5,
+  }
+]
+
 module.exports = {
   saleRegistered,
   saleService,
@@ -127,4 +152,6 @@ module.exports = {
   notfoundSale,
   serviceQuantityError,
   saleWithoutRightQuantity,
+  salesUpdated,
+  updatedSale,
 };

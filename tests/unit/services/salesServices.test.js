@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const saleModel = require('../../../src/models/sale.model');
 const Sale = require('../../../src/services/sale.service');
-const { saleError, serviceError, saleRegistered, saleService, serviceSuccess, saleWithoutId, notfound, allSales, saleId, notfoundSale, saleWithoutRightQuantity, serviceQuantityError } = require('./mocks/sales.mock')
+const { saleError, serviceError, saleRegistered, saleService, serviceSuccess, saleWithoutId, notfound, allSales, saleId, notfoundSale, saleWithoutRightQuantity, serviceQuantityError, salesUpdated, updatedSale } = require('./mocks/sales.mock')
 
 
 describe('Testing Sale Service', () => {
@@ -81,5 +81,29 @@ describe('Testing Sale Service', () => {
     const response = await Sale.deleteSale(999);
 
     expect(response).to.be.deep.equal(notfoundSale);
+  });
+
+  it('Testing updateSale service update a sale correctly', async () => {
+    sinon.stub(saleModel, 'updateSale').resolves(salesUpdated);
+
+    const response = await Sale.updateSale(1, updatedSale);
+
+    expect(response).to.be.deep.equal({ status: 200, data: salesUpdated });
+  });
+
+  it('Testing updateSale return error when passed a id that does not exists', async () => {
+    sinon.stub(saleModel, 'updateSale').resolves(false);
+
+    const response = await Sale.updateSale(999, updatedSale);
+
+    expect(response).to.be.deep.equal(notfoundSale);
+  });
+
+  it('Testing updateSale return error when not passed a correct sale', async () => {
+    sinon.stub(saleModel, 'updateSale').resolves();
+
+    const response = await Sale.updateSale(1, saleError);
+
+    expect(response).to.be.deep.equal(serviceError);
   });
 });

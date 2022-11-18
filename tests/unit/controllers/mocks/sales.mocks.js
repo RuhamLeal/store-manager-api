@@ -9,6 +9,31 @@ const sale = [
   }
 ]
 
+const updatedSale = [
+  {
+    productId: 1,
+    quantity: 5,
+  },
+  {
+    productId: 2,
+    quantity: 5,
+  }
+]
+
+const salesUpdated = {
+  saleId: 1,
+  itemsUpdated: [
+    {
+      productId: 1,
+      quantity: 5,
+    },
+    {
+      productId: 2,
+      quantity: 5,
+    }
+  ]
+}
+
 const wrongSale = [
   {
     productId: 999,
@@ -62,4 +87,12 @@ const foundSale = [
   }
 ]
 
-module.exports = { sale, registeredSale, allSales, foundSale, wrongSale };
+module.exports = {
+  sale,
+  registeredSale,
+  allSales,
+  foundSale,
+  wrongSale,
+  updatedSale,
+  salesUpdated,
+};
