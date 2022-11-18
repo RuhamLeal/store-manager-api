@@ -5,10 +5,10 @@ const Product = require('../../../src/services/product.service');
 const {
   products,
   product,
-  notFound,
+  notfound,
   databaseError,
   newProduct,
-  updatedProduct } = require('./mocks/products.mock');
+  updatedProduct } = require('../mocks/product.mocks');
 
 describe('Testing Product Service', function () {
   afterEach(sinon.restore);
@@ -43,7 +43,7 @@ describe('Testing Product Service', function () {
     const response = await Product.findProductById(999);
 
     expect(response.status).to.be.equal(404);
-    expect(response.data).to.be.deep.equal(notFound);
+    expect(response.data).to.be.deep.equal(notfound);
   });
 
   it('Testing if the registerProduct service register a product correctly', async function () {
@@ -106,7 +106,7 @@ describe('Testing Product Service', function () {
     const response = await Product.updateProduct(999, 'Traje do homem aranha');
 
     expect(response.status).to.be.equal(404);
-    expect(response.data).to.be.deep.equal(notFound);
+    expect(response.data).to.be.deep.equal(notfound);
   });
 
   it('Testing if the deleteProduct service delete a product correctly', async function () {
@@ -123,6 +123,6 @@ describe('Testing Product Service', function () {
     const response = await Product.deleteProduct(999);
 
     expect(response.status).to.be.equal(404);
-    expect(response.data).to.be.deep.equal(notFound);
+    expect(response.data).to.be.deep.equal(notfound);
   });
 });

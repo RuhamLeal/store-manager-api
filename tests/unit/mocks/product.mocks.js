@@ -1,3 +1,12 @@
+const product = {
+  id: 1,
+  name: 'Martelo de Thor',
+};
+
+const notfound = {
+  message: 'Product not found',
+};
+
 const products = [
   {
     id: 1,
@@ -13,10 +22,11 @@ const products = [
   },
 ];
 
-const updatedProductMock = {
+const updatedProduct = {
   id: 1,
-  name: 'Relampago Mcqueen',
+  name: 'Traje do pantera negra',
 };
+
 
 const newProduct = {
   name: 'Armadura do homem de ferro',
@@ -27,9 +37,16 @@ const newProductResponse = {
   name: 'Armadura do homem de ferro',
 };
 
+const databaseError = {
+  message: 'database internal ERROR',
+};
+
 module.exports = {
   products,
+  notfound,
   newProduct,
+  updatedProduct,
   newProductResponse,
-  updatedProductMock,
+  product,
+  databaseError,
 };

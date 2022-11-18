@@ -2,10 +2,10 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const saleModel = require('../../../src/models/sale.model');
 const Sale = require('../../../src/services/sale.service');
-const { saleError, serviceError, saleRegistered,
-  saleService, serviceSuccess, saleWithoutId, notfound,
-  allSales, saleId, notfoundSale, saleWithoutRightQuantity,
-  serviceQuantityError, salesUpdated, updatedSale } = require('./mocks/sales.mock');
+const { saleError, serviceError, registeredSale,
+  sale, serviceSuccess, saleWithoutId, notfoundProduct,
+  allSales, foundSale, notfoundSale, saleWithoutRightQuantity,
+  serviceQuantityError, salesUpdated, updatedSale } = require('../mocks/sale.mocks');
 
 describe('Testing Sale Service', function () {
   afterEach(sinon.restore);
@@ -17,9 +17,9 @@ describe('Testing Sale Service', function () {
   });
 
   it('Testing registerSale service register a sale correctly', async function () {
-    sinon.stub(saleModel, 'registerSale').resolves(saleRegistered);
+    sinon.stub(saleModel, 'registerSale').resolves(registeredSale);
 
-    const result = await Sale.registerSale(saleService);
+    const result = await Sale.registerSale(sale);
 
     expect(result).to.deep.equal(serviceSuccess);
   });
@@ -27,7 +27,7 @@ describe('Testing Sale Service', function () {
   it('Testing registerSale service return error when passed a id that does not exists', async function () {
     const response = await Sale.registerSale(saleWithoutId);
 
-    expect(response).to.deep.equal(notfound);
+    expect(response).to.deep.equal(notfoundProduct);
   });
 
   it('Testing registerSale service return error when passed a wrong quantity', async function () {
@@ -53,11 +53,11 @@ describe('Testing Sale Service', function () {
   });
 
   it('Testing findSaleById service return the found sale correctly', async function () {
-    sinon.stub(saleModel, 'findSaleById').resolves(saleId);
+    sinon.stub(saleModel, 'findSaleById').resolves(foundSale);
 
     const response = await Sale.findSaleById(1);
 
-    expect(response).to.deep.equal({ status: 200, data: saleId });
+    expect(response).to.deep.equal({ status: 200, data: foundSale });
   });
  
   it('Testing findSaleById service return error when search for non-existen sales', async function () {

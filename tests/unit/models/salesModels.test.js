@@ -3,13 +3,13 @@ const sinon = require('sinon');
 const connection = require('../../../src/models/connection');
 const Sale = require('../../../src/models/sale.model');
 const { 
-  salesSold,
+  registeredSale,
   sale, 
   allSales,
-  saleResponse,
+  foundSale,
   updatedSale,
   salesUpdated,
-} = require('./mocks/sales.mock');
+} = require('../mocks/sale.mocks');
 
 describe('Testing Sale Model', function () {
   afterEach(sinon.restore);
@@ -18,7 +18,7 @@ describe('Testing Sale Model', function () {
 
       const response = await Sale.registerSale(sale);
 
-      expect(response).to.be.deep.equal(salesSold);
+      expect(response).to.be.deep.equal(registeredSale);
     });
 
   it('Testing if the findAllSales model returns all sales correctly', async function () {
@@ -30,11 +30,11 @@ describe('Testing Sale Model', function () {
     });
 
   it('Testing if the findSaleById model returns the found sale by id correctly', async function () {
-      sinon.stub(connection, 'execute').resolves([saleResponse]);
+      sinon.stub(connection, 'execute').resolves([foundSale]);
 
       const response = await Sale.findSaleById(1);
 
-      expect(response).to.be.deep.equal(saleResponse);
+      expect(response).to.be.deep.equal(foundSale);
   });
 
   it('Testing if the findSaleById model returns a empty array when not found the sale', async function () {

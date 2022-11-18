@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const connection = require('../../../src/models/connection');
 const product = require('../../../src/models/product.model');
-const { products, newProductResponse, updatedProductMock } = require('./mocks/products.mock');
+const { products, newProductResponse, updatedProduct } = require('../mocks/product.mocks');
 
 describe('Testing Product Model', function () {
   afterEach(sinon.restore);
@@ -41,15 +41,15 @@ describe('Testing Product Model', function () {
   it('Testing if the updateProduct Model update product correctly', async function () {
     sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
 
-    const response = await product.updateProduct(1, 'Relampago Mcqueen');
+    const response = await product.updateProduct(1, 'Traje do pantera negra');
 
-    expect(response).to.be.deep.equal(updatedProductMock);
+    expect(response).to.be.deep.equal(updatedProduct);
   });
 
   it('Testing if the updateProduct Model return error when passed a id that does not exist', async function () {
     sinon.stub(connection, 'execute').resolves([{ affectedRows: 0 }]);
 
-    const response = await product.updateProduct(999, 'Relampago Mcqueen');
+    const response = await product.updateProduct(999, 'Traje do pantera negra');
 
     expect(response).to.be.false;
   });
