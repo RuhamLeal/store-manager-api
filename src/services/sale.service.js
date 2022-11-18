@@ -58,8 +58,7 @@ async function updateSale(saleId, sales) {
 
     if (updatedSales) return { status: 200, data: updatedSales };
     return { status: 404, data: { message: 'Sale not found' } };
-
-  } catch (err) {
+    } catch (err) {
     return { status: 500, data: { message: err.message } };
   }
 }

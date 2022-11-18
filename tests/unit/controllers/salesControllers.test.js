@@ -5,14 +5,13 @@ const Sale = require('../../../src/services/sale.service');
 const saleController = require('../../../src/controllers/sale.controller');
 const { wrongSale, updatedSale, salesUpdated } = require('./mocks/sales.mocks');
 
-
 const { expect } = chai;
 chai.use(sinonChai);
 
-describe('Testing Sale Controller', () => {
+describe('Testing Sale Controller', function () {
   afterEach(sinon.restore);
 
-  it('Testing if the addSale controller return error when passed a productId that does not exist', async () => {
+  it('Testing if the addSale controller return error when passed a productId that does not exist', async function () {
     const req = { body: wrongSale };
     const res = {};
 
@@ -20,15 +19,15 @@ describe('Testing Sale Controller', () => {
     res.json = sinon.stub().returns();
 
     sinon.stub(Sale, 'registerSale')
-      .resolves({ status: 404, data: { message: 'Product not found' }});
+      .resolves({ status: 404, data: { message: 'Product not found' } });
 
     await saleController.addSale(req, res);
 
     expect(res.status).to.have.been.calledWith(404);
-    expect(res.json).to.have.been.calledWith({ message: 'Product not found'  });
+    expect(res.json).to.have.been.calledWith({ message: 'Product not found' });
   });
 
-  it('Testing if the deleteSale controller delete a sale and call its service correctly', async () => {
+  it('Testing if the deleteSale controller delete a sale and call its service correctly', async function () {
     const req = { params: { id: 1 } };
     const res = {};
 
@@ -43,7 +42,7 @@ describe('Testing Sale Controller', () => {
     expect(res.status).to.have.been.calledWith(204);
   });
 
-  it('Testing if the deleteSale controller return error when passed a id that does not exists', async () => {
+  it('Testing if the deleteSale controller return error when passed a id that does not exists', async function () {
     const req = { params: { id: 999 } };
     const res = {};
 
@@ -60,7 +59,7 @@ describe('Testing Sale Controller', () => {
     expect(res.json).to.have.been.calledWith({ message: 'Sale not found' });
   });
 
-  it('Testing if the updateSale controller update a sale and call its service correctly', async () => {
+  it('Testing if the updateSale controller update a sale and call its service correctly', async function () {
     const req = { params: { id: 1 }, body: updatedSale };
     const res = {};
 
@@ -107,5 +106,4 @@ describe('Testing Sale Controller', () => {
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(foundSale);
   });  */
-
 });
