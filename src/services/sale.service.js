@@ -24,6 +24,7 @@ async function findSaleById(saleId) {
 async function registerSale(sales) {
   try {
     const validationMessage = await validateNewSale(sales);
+
     if (validationMessage !== 'without errors') {
       return { status: validationMessage.status, data: { message: validationMessage.error } };
     }
@@ -35,8 +36,19 @@ async function registerSale(sales) {
   }
 }
 
+async function deleteSale(saleId) {
+  try {
+    const deletedSale = await Sale.deleteSale(saleId);
+    if (deletedSale) return { status: 204 };
+    return { status: 404, data: { message: 'Sale not found' } };
+  } catch (err) {
+    return { status: 500, data: { message: err.message } };
+  }
+}
+
 module.exports = {
   registerSale,
   findAllSales,
   findSaleById,
+  deleteSale,
 };
