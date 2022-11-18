@@ -15,16 +15,18 @@ Project made in @trybe's course and uses node.js, express, mysql, chai, sinon an
 
 ## Getting Started
 
-This API was developed by me in the trybe course where it works with a mysql database, many endpoints have validations and are working with route management, has unit tests for all layers, it works locally so you need to download the repository
+This API was developed by me and it works with a mysql database, many endpoints have validations and are working with route management, has unit tests for all layers, it works locally so you need to download the repository    
+
+The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).
 
 
 SOME ENDPOINTS:    
-products: http://localhost:3000/products to show all products data.      
-sales: http://localhost:3000/sales to show all sales data    
-find product by ID: http://localhost:3000/products/${id}            
-find sale by ID: http://localhost:3000/sales/${id}     
-delete a sale: http://localhost:3000/sales/${id}  with delete method      
-delete a product: http://localhost:3000/products/${id}  with delete method     
+products: http://15.228.199.125:3001/products to show all products data.      
+sales: http://15.228.199.125:3001/sales to show all sales data    
+find product by ID: http://15.228.199.125:3001/products/${id}            
+find sale by ID: http://15.228.199.125:3001/sales/${id}     
+delete a sale: http://15.228.199.125:3001/sales/${id}  with delete method      
+delete a product: http://15.228.199.125:3001/products/${id}  with delete method     
 
 Project have more endpoints, install repo and see more !
 
