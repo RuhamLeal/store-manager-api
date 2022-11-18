@@ -34,9 +34,7 @@ node 16 version
 MySQL 5.7 version or 8.0 version        
 Docker(v20.10) and docker-compose(v2.5.0) (If you dont have MySQL installed)        
 
-### Installation
-
-If you dont have MySQL installed, follow the steps below:     
+### Installation  
 
 Clone the repo:     
 ```
@@ -62,25 +60,27 @@ Run server:
 npm start    
 ```
 
+If you dont have node 16 version or MySQL installed, you can run with docker-compose:   
 ```
-If you dont have node 16 version or MySQL installed, you can run with docker-compose
+docker-compose up -d
 ```
-$ docker-compose up -d
  
-Await download the images and then:
+Await download the images and then:    
+```
+docker exec -it store_manager bash
+```
 
-$ docker exec -it store_manager bash
-
-Inside the container, install dependecies:
-
-$ npm install
+Inside the container, install dependecies:       
+```
+npm install
+```
 
 Populate database with scripts:    
 
 migration.sql then seed.sql
 
-And run server:
-
+And run server:       
+```
 $ npm start
 ```
 
