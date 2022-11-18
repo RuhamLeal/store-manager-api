@@ -24,16 +24,15 @@ async function findSaleById(saleId) {
 }
 
 async function registerSale(sales) {
-  const date = new Date();
   const [newSale] = await connection.execute(
     `INSERT INTO StoreManager.sales (date)
       VALUE (?)`,
-    [date.toDateString()],
+    [new Date()],
   );
 
   const saleId = newSale.insertId;
 
-  sales.forEach(async (sale) => {
+  sales.map(async (sale) => {
     await connection.execute(
       `INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) 
       VALUES (?, ?, ?)`,
