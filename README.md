@@ -10,7 +10,7 @@ Project made in @trybe's course and uses node.js, express, mysql, chai, sinon an
 - [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [More Info](#more-info)
+- [Tests](#tests)
 - [Contact](#contact)
 
 ## Getting Started
@@ -87,9 +87,12 @@ And run server:
 $ npm start
 ```
 
-### More Info
+### Tests
 
-This Project will was done with node.js, express.js, docker-compose.
+The aplication has unit tests for all layers, run with:
+```
+npm run test:mocha
+```
 
 ### Contact
 
