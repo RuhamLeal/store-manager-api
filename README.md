@@ -15,7 +15,7 @@ Project made in @trybe's course and uses node.js, express, mysql, chai, sinon an
 
 ## Getting Started
 
-This API was developed by me in the trybe course where it works with a mysql database, many endpoints have validations and are working with route management, it works locally, so you need to download the repository
+This API was developed by me in the trybe course where it works with a mysql database, many endpoints have validations and are working with route management, has unit tests for all layers, it works locally so you need to download the repository
 
 
 SOME ENDPOINTS:    
