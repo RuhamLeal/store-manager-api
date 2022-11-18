@@ -57,19 +57,23 @@ Run server:
 $ npm start
 
 ```
-If you dont have node 16 version installed, you can run with docker-compose
+If you dont have node 16 version or MySQL installed, you can run with docker-compose
 ```
 $ docker-compose up -d
  
-Await download the image and then:
+Await download the images and then:
 
-$ docker exec -it talker_manager bash
+$ docker exec -it store_manager bash
 
 Inside the container, install dependecies:
 
 $ npm install
 
-And Run server:
+And Run mysql scripts:
+
+$ npm run migration && npm run seed
+
+And run server:
 
 $ npm start
 ```
