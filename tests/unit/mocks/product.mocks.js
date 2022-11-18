@@ -27,7 +27,6 @@ const updatedProduct = {
   name: 'Traje do pantera negra',
 };
 
-
 const newProduct = {
   name: 'Armadura do homem de ferro',
 };
