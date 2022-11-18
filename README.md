@@ -30,9 +30,9 @@ Project have more endpoints, install repo and see more !
 
 ### Prerequisites
 
-node 16 version
-MySQL 5.7 version or 8.0 version
-Docker(v20.10) and docker-compose(v2.5.0) (If you dont have MySQL installed)
+node 16 version         
+MySQL 5.7 version or 8.0 version        
+Docker(v20.10) and docker-compose(v2.5.0) (If you dont have MySQL installed)        
 
 ### Installation
 
