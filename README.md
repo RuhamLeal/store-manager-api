@@ -1,6 +1,6 @@
 # store-manager-api
 
-An API that manager store sales and producst .
+An API that manager store sales and products .
 
 
 # Table of contents
