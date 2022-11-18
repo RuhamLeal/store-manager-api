@@ -56,9 +56,28 @@ async function deleteSale(saleId) {
   return true;
 }
 
+async function updateSale(saleId, sales) {
+  const [response] = await sales.map((sale) => (
+    connection.execute(
+      `UPDATE StoreManager.sales_products
+      SET quantity = ?
+      WHERE sale_id = ?
+      AND product_id = ?`, [sale.quantity, saleId, sale.productId],
+    )));
+
+  const isUpdated = await response;
+  if (isUpdated[0].affectedRows === 0) return false;
+
+  return {
+    saleId,
+    itemsUpdated: sales,
+  };
+}
+
 module.exports = {
   findAllSales,
   findSaleById,
   registerSale,
   deleteSale,
+  updateSale,
 };
