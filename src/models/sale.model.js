@@ -51,8 +51,7 @@ async function deleteSale(saleId) {
     'DELETE FROM StoreManager.sales WHERE id = ?',
     [saleId],
   );
-  if (response.affectedRows === 0) return false;
-  return true;
+  return response.affectedRows;
 }
 
 async function updateSale(saleId, sales) {
