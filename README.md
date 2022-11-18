@@ -1,6 +1,8 @@
 # store-manager-api
 
-An API that manager store sales and products .
+An API that manages the store's sales and products. You can add, update, find and delete specific products and the same for sales.    
+
+Project made in @trybe's course and uses node.js, express, mysql, chai, sinon and has the Model, Service and Controller architecture.
 
 
 # Table of contents
@@ -13,20 +15,28 @@ An API that manager store sales and products .
 
 ## Getting Started
 
-This API was developed by me in the trybe course where it works with a json file to save and get the data, many endpoints have validations and are working with route management, it works locally, so you need to download the repository
+This API was developed by me in the trybe course where it works with a mysql database, many endpoints have validations and are working with route management, it works locally, so you need to download the repository
 
 
 SOME ENDPOINTS:    
-talkers: http://localhost:3000/talker to show all talker data.     
-login: http://localhost:3000/login to validate your login    
-find talker by ID: http://localhost:3000/talker/${id}          
-find talker by name: http://localhost:3000/talker/search?q=${name}    
+products: http://localhost:3000/products to show all products data.      
+sales: http://localhost:3000/sales to show all sales data    
+find product by ID: http://localhost:3000/products/${id}            
+find sale by ID: http://localhost:3000/sales/${id}     
+delete a sale: http://localhost:3000/sales/${id}  with delete method 
+delete a product: http://localhost:3000/products/${id}  with delete method     
+
+Project have more endpoints, install repo and see more !
 
 ### Prerequisites
 
 node 16 version
+MySQL 5.7 version or 8.0 version
+Docker(v20.10) and docker-compose(v2.5.0) (If you dont have MySQL installed)
 
 ### Installation
+
+If you dont have MySQL installed, follow the steps below:
 
 ```
 
