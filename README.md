@@ -49,8 +49,9 @@ $ cd store-manager-api
 Install dependencies:    
 $ npm install
 
-Run database scripts:    
-$ npm run migration && npm run seed
+Populate database with scripts:    
+
+migration.sql then seed.sql
 
 Run server:
 
@@ -69,9 +70,9 @@ Inside the container, install dependecies:
 
 $ npm install
 
-And Run mysql scripts:
+Populate database with scripts:    
 
-$ npm run migration && npm run seed
+migration.sql then seed.sql
 
 And run server:
 
