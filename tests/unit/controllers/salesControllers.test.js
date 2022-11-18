@@ -20,12 +20,44 @@ describe('Testing Sale Controller', () => {
     res.json = sinon.stub().returns();
 
     sinon.stub(Sale, 'registerSale')
-      .resolves({ code: 404, data: { message: 'Product not found' }});
+      .resolves({ status: 404, data: { message: 'Product not found' }});
 
     await saleController.addSale(req, res);
 
     expect(res.status).to.have.been.calledWith(404);
     expect(res.json).to.have.been.calledWith({ message: 'Product not found'  });
+  });
+
+  it('Testing if the deleteSale controller delete a sale and call its service correctly', async () => {
+    const req = { params: { id: 1 } };
+    const res = {};
+
+    res.status = sinon.stub().returns(res);
+    res.send = sinon.stub().returns();
+
+    sinon.stub(Sale, 'deleteSale')
+      .resolves({ status: 204 });
+
+    await saleController.deleteSale(req, res);
+
+    expect(res.status).to.have.been.calledWith(204);
+  });
+
+  it('Testing if the deleteSale controller return error when passed a id that does not exists', async () => {
+    const req = { params: { id: 999 } };
+    const res = {};
+
+    res.status = sinon.stub().returns(res);
+    res.send = sinon.stub().returns();
+    res.json = sinon.stub().returns();
+
+    sinon.stub(Sale, 'deleteSale')
+      .resolves({ status: 404, data: { message: 'Sale not found' } });
+
+    await saleController.deleteSale(req, res);
+
+    expect(res.status).to.have.been.calledWith(404);
+    expect(res.json).to.have.been.calledWith({ message: 'Sale not found' });
   });
 
 /*    it('Testing if the getSales returns all sales correctly', async () => {

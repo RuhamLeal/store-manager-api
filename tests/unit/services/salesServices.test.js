@@ -66,4 +66,20 @@ describe('Testing Sale Service', () => {
 
     expect(response).to.deep.equal(notfoundSale);
   });
+
+  it('Testing deleteSale service delete a sale correctly', async () => {
+    sinon.stub(saleModel, 'deleteSale').resolves(true);
+
+    const response = await Sale.deleteSale(1);
+
+    expect(response).to.be.deep.equal({ status: 204 });
+  });
+
+  it('Testing deleteSale service returns error when passed a id that does not exists', async () => {
+    sinon.stub(saleModel, 'deleteSale').resolves(false);
+
+    const response = await Sale.deleteSale(999);
+
+    expect(response).to.be.deep.equal(notfoundSale);
+  });
 });

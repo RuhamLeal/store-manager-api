@@ -29,6 +29,7 @@ describe('Testing Sale Model', () => {
 
       expect(response).to.be.deep.equal(saleResponse);
   });
+
   it('Testing if the findSaleById model returns a empty array when not found the sale', async () => {
     sinon.stub(connection, 'execute').resolves([]);
 
@@ -36,4 +37,20 @@ describe('Testing Sale Model', () => {
 
     expect(response).to.be.equal(undefined);
   });
+
+  it('Testing if the deleteSale model delete a sale correctly', async () => {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+
+    const response = await Sale.deleteSale(1);
+
+    expect(response).to.be.true;
   });
+
+  it('Testing if the deleteSale model return error when passed a id that does not exists', async () => {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 0 }]);
+
+    const response = await Sale.deleteSale(999);
+
+    expect(response).to.be.false;
+  });
+});
