@@ -17,8 +17,11 @@ Project made in @trybe's course and uses node.js, express, mysql, chai, sinon an
 
 This API was developed by me and it works with a mysql database, many endpoints have validations and are working with route management, has unit tests for all layers, it works locally so you need to download the repository    
 
-The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).
+The api was uploaded with a public IP through the AWS cloud system with EC2. To see the code of the project you can install it locally ( Below you will find the instructions ).      
 
+
+
+BASE URL: http://15.228.199.125:3001
 
 SOME ENDPOINTS:    
 products: http://15.228.199.125:3001/products to show all products data.      
