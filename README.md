@@ -89,7 +89,7 @@ migration.sql then seed.sql
 
 And run server:       
 ```
-$ npm start
+npm start
 ```
 
 ### Tests
