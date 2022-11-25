@@ -21,15 +21,15 @@ The api was uploaded with a public IP through the AWS cloud system with EC2. To 
 
 
 
-BASE URL: http://15.228.199.125:3001
+BASE URL: http://18.229.143.23:3001
 
 SOME ENDPOINTS:    
-products: http://15.228.199.125:3001/products to show all products data.      
-sales: http://15.228.199.125:3001/sales to show all sales data    
-find product by ID: http://15.228.199.125:3001/products/${id}            
-find sale by ID: http://15.228.199.125:3001/sales/${id}     
-delete a sale: http://15.228.199.125:3001/sales/${id}  with delete method      
-delete a product: http://15.228.199.125:3001/products/${id}  with delete method     
+products: http://18.229.143.23:3001/products to show all products data.      
+sales: http://18.229.143.23:3001/sales to show all sales data    
+find product by ID: http://18.229.143.23:3001/products/${id}            
+find sale by ID: http://18.229.143.23:3001/sales/${id}     
+delete a sale: http://18.229.143.23:3001/sales/${id}  with delete method      
+delete a product: http://18.229.143.23:3001/products/${id}  with delete method     
 
 Project have more endpoints, install repo and see more !
 
