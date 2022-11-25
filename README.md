@@ -2,7 +2,7 @@
 
 An API that manages the store's sales and products. You can add, update, find and delete specific products and the same for sales.    
 
-Project made in @trybe's course and uses node.js, express, mysql, chai, sinon and has the Model, Service and Controller architecture.
+Project made in [Trybe](https://www.betrybe.com/) course and uses node.js, express, mysql, chai, sinon and has the Model, Service and Controller architecture.
 
 
 # Table of contents
